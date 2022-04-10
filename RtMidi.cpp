@@ -1540,13 +1540,13 @@ void MidiOutCore :: sendMessage( const unsigned char *message, size_t size )
     error( RtMidiError::WARNING, errorString_ );
     return;
   }
-
+#if 0
   if ( message[0] != 0xF0 && nBytes > 3 ) {
     errorString_ = "MidiOutCore::sendMessage: message format problem ... not sysex but > 3 bytes?";
     error( RtMidiError::WARNING, errorString_ );
     return;
   }
-
+#endif
   MIDITimeStamp timeStamp = AudioGetCurrentHostTime();
   CoreMidiData *data = static_cast<CoreMidiData *> (apiData_);
   OSStatus result;
